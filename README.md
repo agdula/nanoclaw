@@ -60,19 +60,19 @@ Then run `/setup`. Claude Code handles everything: dependencies, authentication,
 
 ## Usage
 
-Talk to your assistant with the trigger word (default: `@Andy`):
+Talk to your assistant with the trigger word (default: `@Jan`):
 
 ```
-@Andy send an overview of the sales pipeline every weekday morning at 9am (has access to my Obsidian vault folder)
-@Andy review the git history for the past week each Friday and update the README if there's drift
-@Andy every Monday at 8am, compile news on AI developments from Hacker News and TechCrunch and message me a briefing
+@Jan send an overview of the sales pipeline every weekday morning at 9am (has access to my Obsidian vault folder)
+@Jan review the git history for the past week each Friday and update the README if there's drift
+@Jan every Monday at 8am, compile news on AI developments from Hacker News and TechCrunch and message me a briefing
 ```
 
 From the main channel (your self-chat), you can manage groups and tasks:
 ```
-@Andy list all scheduled tasks across groups
-@Andy pause the Monday briefing task
-@Andy join the Family Chat group
+@Jan list all scheduled tasks across groups
+@Jan pause the Monday briefing task
+@Jan join the Family Chat group
 ```
 
 ## Customizing
@@ -87,6 +87,17 @@ There are no configuration files to learn. Just tell Claude Code what you want:
 Or run `/customize` for guided changes.
 
 The codebase is small enough that Claude can safely modify it.
+
+
+### GitHub Copilot Login (without an existing token)
+
+If you don't have `GH_TOKEN` / `GITHUB_TOKEN` / `GITHUB_COPILOT_TOKEN` yet, run:
+
+```bash
+npx tsx setup/index.ts --step copilot-auth
+```
+
+NanoClaw will start GitHub Device Flow, show you a code, and ask you to confirm after you enter it at `https://github.com/login/device`. It then stores the token in your `.env` automatically.
 
 ## Updating
 
