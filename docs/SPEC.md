@@ -227,7 +227,7 @@ Additional mounts appear at `/workspace/extra/{containerPath}` inside the contai
 
 ### Claude Authentication
 
-Configure authentication in a `.env` file in the project root. Two options:
+Configure authentication in a `.env` file in the project root. Three options:
 
 **Option 1: Claude Subscription (OAuth token)**
 ```bash
@@ -240,7 +240,27 @@ The token can be extracted from `~/.claude/.credentials.json` if you're logged i
 ANTHROPIC_API_KEY=sk-ant-api03-...
 ```
 
-Only the authentication variables (`CLAUDE_CODE_OAUTH_TOKEN` and `ANTHROPIC_API_KEY`) are extracted from `.env` and written to `data/env/env`, then mounted into the container at `/workspace/env-dir/env` and sourced by the entrypoint script. This ensures other environment variables in `.env` are not exposed to the agent. This workaround is needed because some container runtimes lose `-e` environment variables when using `-i` (interactive mode with piped stdin).
+
+**Option 3: GitHub Copilot-linked Claude Code plan**
+```bash
+# Use whichever token variable your Copilot/CLI setup provides
+GITHUB_COPILOT_TOKEN=...
+# or
+GITHUB_TOKEN=...
+# or
+GH_TOKEN=...
+```
+
+Only authentication-related variables (`CLAUDE_CODE_OAUTH_TOKEN`, `ANTHROPIC_API_KEY`, `GITHUB_COPILOT_TOKEN`, `GITHUB_TOKEN`, `GH_TOKEN`) are extracted from `.env` and passed into the SDK runtime. This ensures other environment variables in `.env` are not exposed to the agent.
+
+
+If you don't have a token yet, run:
+
+```bash
+npx tsx setup/index.ts --step copilot-auth
+```
+
+This starts GitHub Device Flow, prints a one-time code for `https://github.com/login/device`, waits for approval, then writes the resulting token to `.env` as `GH_TOKEN` (customizable with `--env-key`).
 
 ### Changing the Assistant Name
 

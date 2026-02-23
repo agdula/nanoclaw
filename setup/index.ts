@@ -11,6 +11,7 @@ const STEPS: Record<string, () => Promise<{ run: (args: string[]) => Promise<voi
   'whatsapp-auth': () => import('./whatsapp-auth.js'),
   groups: () => import('./groups.js'),
   register: () => import('./register.js'),
+  'copilot-auth': () => import('./copilot-auth.js'),
   mounts: () => import('./mounts.js'),
   service: () => import('./service.js'),
   verify: () => import('./verify.js'),
