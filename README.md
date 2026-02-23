@@ -3,7 +3,7 @@
 </p>
 
 <p align="center">
-  My personal Claude assistant that runs securely in containers. Lightweight and built to be understood and customized for your own needs.
+  My personal AI assistant that runs securely in containers. Lightweight and built to be understood and customized for your own needs.
 </p>
 
 <p align="center">
@@ -21,15 +21,16 @@
 
 NanoClaw gives you the same core functionality in a codebase you can understand in 8 minutes. One process. A handful of files. Agents run in actual Linux containers with filesystem isolation, not behind permission checks.
 
-## Quick Start
+## Quick Start (Copilot-only)
 
 ```bash
 git clone https://github.com/qwibitai/nanoclaw.git
 cd nanoclaw
-claude
+npm install
+npm run setup -- --step environment
 ```
 
-Then run `/setup`. Claude Code handles everything: dependencies, authentication, container setup, service configuration.
+Continue with the Copilot-first setup guide: [docs/COPILOT_ONLY_SETUP.md](docs/COPILOT_ONLY_SETUP.md).
 
 ## Philosophy
 
@@ -134,7 +135,7 @@ Skills we'd like to see:
 
 - macOS or Linux
 - Node.js 20+
-- [Claude Code](https://claude.ai/download)
+- GitHub account with access to GitHub Copilot
 - [Apple Container](https://github.com/apple/container) (macOS) or [Docker](https://docker.com/products/docker-desktop) (macOS/Linux)
 
 ## Architecture
